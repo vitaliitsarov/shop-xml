@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Storage;
+
+use App\Models\Product;
 
 class ParseXmlHurt extends Command
 {
@@ -28,9 +31,18 @@ class ParseXmlHurt extends Command
      */
     public function handle()
     {
-        // if() {
+     
+        $xmlfile = storage_path('app/public/export/36d18934f6ab856fcbd8572d81c96deb.xml');
+        
+        $xmlObject = simplexml_load_string($xmlFile);
+		
+        $jsonFormatData = json_encode($xmlObject);
+        $result = json_decode($jsonFormatData, true); 
 
-        // }
+        dd($array);
+        // Product::firstOrCreate([
+        //     'id_provider' => 
+        // ]);
 
         return 0;
     }
