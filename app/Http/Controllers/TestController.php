@@ -11,7 +11,7 @@ use App\Models\Category;
 
 use Tightenco\Collect\Support\Collection;
 use Rodenastyle\StreamParser\StreamParser;
-
+use Intervention\Image\ImageManagerStatic as Image;
 
 class TestController extends Controller
 {
@@ -19,11 +19,7 @@ class TestController extends Controller
     
     public function index()
     {
-        $file = Storage::get('http://ombero.pl/templates/images/products/15322/ec62c7bea6d8610ce602f021857501ad.jpg');
-        Storage::put($file, 'products/15322/ec62c7bea6d8610ce602f021857501ad.jpg');
 
-        die();
-        
         StreamParser::xml(storage_path('app/public/export/36d18934f6ab856fcbd8572d81c96deb.xml'))->each(function(Collection $xml){
             $id_provider    = (int) $xml->get('ID');
             $price_netto    = str_replace(",", ".", $xml->get('Cenanettoproduktu'));
@@ -52,15 +48,20 @@ class TestController extends Controller
                 $productNew->stock          = $stock;
                 $productNew->original_url   = $original_url;
                 $productNew->description    = $description;
-                
                 // Images
+                $images_json = [];
+                Storage::makeDirectory("public/products/$id_provider");
+
                 $images_new = explode('*', $images);
-
                 foreach($images_new as $key_image => $value_image) {
-                    Storage::copy('http://ombero.pl/templates/images/products/15322/ec62c7bea6d8610ce602f021857501ad.jpg', 'products/15322/ec62c7bea6d8610ce602f021857501ad.jpg');
+                    $filename = basename($value_image);
+                    Image::make($value_image)->save(storage_path("app/public/products/$id_provider/$filename"));
+                    $images_json[] = "/storage/products/$id_provider/$filename";
                 }
-
+                $productNew->images         = json_encode($images_json);
+                // $productNew->categories()->save(Category::create(['title' => 'Test']));
                 $productNew->save();
+                
                 // $category_explode = explode('/', $category);
                 // foreach($category_explode as $key_category => $value_category) {
                 //     if($key_category === 0) {
