@@ -56,16 +56,22 @@ class Product extends Model
         return $this->belongsTo('App\Category');
     }
 
+    
+    
     /**
+     * getTitle
+     *
      * @return string
      */
-
     public function getTitle(): string
     {
         return (string) $this->getAttribute(self::COLUMN_TITLE);
     }
 
     /**
+     * seTitle
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function seTitle($value): Product
@@ -74,15 +80,19 @@ class Product extends Model
     }
 
     /**
+     * getIdProvider
+     *
      * @return int
      */
-
     public function getIdProvider(): int
     {
         return $this->getAttribute(self::COLUMN_ID_PROVIDER);
     }
-
+    
     /**
+     * setIdProvider
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setIdProvider($value): Product
@@ -90,101 +100,126 @@ class Product extends Model
         return $this->setAttribute(self::COLUMN_ID_PROVIDER, $value);
     }
 
+       
     /**
-     * @return
+     * getNetto
+     *
+     * @return void
      */
-
     public function getNetto()
     {
         return $this->getAttribute(self::COLUMN_PRICE_NETTO);
     }
-
+    
     /**
+     * setNetto
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setNetto($value): Product
     {
         return $this->setAttribute(self::COLUMN_PRICE_NETTO, $value);
     }
-
+    
     /**
-     * @return
+     * getVat
+     *
+     * @return void
      */
-
     public function getVat()
     {
         return $this->getAttribute(self::COLUMN_VAT);
     }
 
     /**
+     * setVat
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setVat($value): Product
     {
         return $this->setAttribute(self::COLUMN_VAT, $value);
     }
-
+    
     /**
-     * @return
+     * getBrutto
+     *
+     * @return void
      */
-
     public function getBrutto()
     {
         return $this->getAttribute(self::COLUMN_PRICE_BRUTTO);
     }
-
+    
     /**
+     * setBrutto
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setBrutto($value): Product
     {
         return $this->setAttribute(self::COLUMN_PRICE_BRUTTO, $value);
     }
-
+    
     /**
+     * getStock
+     *
      * @return int
      */
-
     public function getStock(): int
     {
         return $this->getAttribute(self::COLUMN_STOCK);
     }
-
+    
     /**
+     * setStock
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setStock($value): Product
     {
         return $this->setAttribute(self::COLUMN_STOCK, $value);
     }
-
+    
     /**
+     * getStatus
+     *
      * @return boolean
      */
-
     public function getStatus(): boolean
     {
         return $this->getAttribute(self::COLUMN_STATUS);
     }
-
+    
     /**
+     * setStatus
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setStatus($value): Product
     {
         return $this->setAttribute(self::COLUMN_STATUS, $value);
     }
-
+    
     /**
+     * getBarcode
+     *
      * @return int
      */
-
     public function getBarcode(): int
     {
         return $this->getAttribute(self::COLUMN_BARCODE);
     }
-
+    
     /**
+     * setBarcode
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setBarcode($value): Product
@@ -193,32 +228,40 @@ class Product extends Model
     }
 
     /**
+     * getOriginalUrl
+     *
      * @return string
      */
-
     public function getOriginalUrl(): string
     {
         return $this->getAttribute(self::COLUMN_ORIGINAL_URL);
     }
-
+    
     /**
+     * setOriginalUrl
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setOriginalUrl($value): Product
     {
         return $this->setAttribute(self::COLUMN_ORIGINAL_URL, $value);
     }
-
+    
     /**
+     * getDescription
+     *
      * @return string
      */
-
     public function getDescription(): string
     {
         return $this->getAttribute(self::COLUMN_DESCRIPTION);
     }
-
+    
     /**
+     * setDescription
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setDescription($value): Product
@@ -227,26 +270,31 @@ class Product extends Model
     }
 
     /**
+     * getImages
+     *
      * @return array
      */
-
     public function getImages(): array
     {
         return json_decode($this->getAttribute(self::COLUMN_IMAGES, true));
     }
-
+    
     /**
+     * setImages
+     *
+     * @param  mixed $value
      * @return Product
      */
     public function setImages($value): Product
     {
         return $this->setAttribute(self::COLUMN_IMAGES, json_encode($value));
     }
-
+    
     /**
+     * getMainImage
+     *
      * @return string
      */
-
     public function getMainImage(): string
     {
         return json_decode($this->getAttribute(self::COLUMN_IMAGES))[0];
