@@ -33,7 +33,7 @@ class TestController extends Controller
             $description    = htmlspecialchars($xml->get('Penlyopis'), ENT_QUOTES);
             $category       = (string) $xml->get('Sciezkakategorii');
             $images         = (string) $xml->get('AdresURLzdjciaproduktu');
-
+          
             $product = Product::where('id_provider', $id_provider)->first();
 
             if(is_null($product)) {
@@ -48,6 +48,7 @@ class TestController extends Controller
                 $productNew->stock          = $stock;
                 $productNew->original_url   = $original_url;
                 $productNew->description    = $description;
+
                 // Images
                 $images_json = [];
                 Storage::makeDirectory("public/products/$id_provider");
@@ -59,27 +60,36 @@ class TestController extends Controller
                     $images_json[] = "/storage/products/$id_provider/$filename";
                 }
                 $productNew->images         = json_encode($images_json);
-                // $productNew->categories()->save(Category::create(['title' => 'Test']));
-                $productNew->save();
-                
-                // $category_explode = explode('/', $category);
-                // foreach($category_explode as $key_category => $value_category) {
-                //     if($key_category === 0) {
-                //         $category_id = Category::firstOrCreate([
-                //             'category' => $value_category,
-                //             'parent_id' => 0
-                //         ]);
-                //     } else {
 
-                //     }
-                // }
+                // Category
+                $categories = [];
+                
+                $category_explode = explode('/', $category);
+                foreach($category_explode as $key_category => $value_category) {
+                    if($key_category === 0) {
+                        $parent = Category::firstOrCreate([
+                            'title' => $value_category,
+                            'parent_id' => 0
+                        ]);
+
+                        $categories[] = $parent['id'];
+                    } else {
+                        $chaild = Category::firstOrCreate([
+                            'title' => $value_category,
+                            'parent_id' => $categories[array_key_last($categories)]
+                        ]);
+                        $categories[] = $chaild['id'];
+                    }
+                }
+
+                // Save
+                $productNew->save();
             } else {
                 $product->price_netto   = $price_netto;
                 $product->price_brutto  = $price_brutto;
                 $product->stock         = $stock;
                 $product->save();
             }
-
         });
 
     }

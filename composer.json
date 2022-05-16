@@ -11,6 +11,8 @@
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "laravel/ui": "^3.4",
+        "php-open-source-saver/jwt-auth": "^1.4",
         "rodenastyle/stream-parser": "^1.5"
     },
     "require-dev": {
