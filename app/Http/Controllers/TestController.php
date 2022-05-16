@@ -19,7 +19,6 @@ class TestController extends Controller
     
     public function index()
     {
-
         StreamParser::xml(storage_path('app/public/export/36d18934f6ab856fcbd8572d81c96deb.xml'))->each(function(Collection $xml){
             $id_provider    = (int) $xml->get('ID');
             $price_netto    = str_replace(",", ".", $xml->get('Cenanettoproduktu'));
@@ -38,16 +37,16 @@ class TestController extends Controller
 
             if(is_null($product)) {
                 $productNew = new Product;
-                $productNew->id_provider    = $id_provider;
-                $productNew->price_netto    = $price_netto;
-                $productNew->price_brutto   = $price_brutto;
-                $productNew->title          = $title;
-                $productNew->vat            = $vat;
-                $productNew->status         = $status;
-                $productNew->barcode        = $barcode;
-                $productNew->stock          = $stock;
-                $productNew->original_url   = $original_url;
-                $productNew->description    = $description;
+                $productNew->setIdProvider($id_provider)
+                    ->setNetto($price_netto)
+                    ->setBrutto($price_brutto)
+                    ->seTitle($title)
+                    ->setVat($vat)
+                    ->setStatus($status)
+                    ->setBarcode($barcode)
+                    ->setStock($stock)
+                    ->setOriginalUrl($original_url)
+                    ->setDescription($description);
 
                 // Images
                 $images_json = [];
@@ -56,10 +55,10 @@ class TestController extends Controller
                 $images_new = explode('*', $images);
                 foreach($images_new as $key_image => $value_image) {
                     $filename = basename($value_image);
-                    Image::make($value_image)->save(storage_path("app/public/products/$id_provider/$filename"));
+                    // Image::make($value_image)->save(storage_path("app/public/products/$id_provider/$filename"));
                     $images_json[] = "/storage/products/$id_provider/$filename";
                 }
-                $productNew->images         = json_encode($images_json);
+                $productNew->setImages($images_json);
 
                 // Category
                 $categories = [];
@@ -85,9 +84,9 @@ class TestController extends Controller
                 // Save
                 $productNew->save();
             } else {
-                $product->price_netto   = $price_netto;
-                $product->price_brutto  = $price_brutto;
-                $product->stock         = $stock;
+                $product->setNetto($price_netto)
+                    ->setBrutto($price_brutto)
+                    ->setStock($stock);
                 $product->save();
             }
         });
