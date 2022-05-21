@@ -15,3 +15,9 @@ use Illuminate\Support\Facades\Route;
  */
 Route::get('/product', [\App\Http\Controllers\Api\V1\ProductController::class, 'index'])->name('product'); 
 Route::get('/product/{id}', [\App\Http\Controllers\Api\V1\ProductController::class, 'show'])->name('product.show'); 
+
+
+/**
+ * Category Routes
+ */
+Route::get('/categories', [\App\Http\Controllers\Api\V1\CategoryController::class, 'index'])->name('categories');
