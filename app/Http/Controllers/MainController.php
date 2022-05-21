@@ -16,79 +16,25 @@ class MainController extends Controller
     public function index()
     {
         $products = Product::select([
+            Product::COLUMN_ID, 
             Product::COLUMN_TITLE, 
             Product::COLUMN_PRICE_BRUTTO, 
             Product::COLUMN_IMAGES
-        ])->simplePaginate(15);
+        ])->orderBy('id')->paginate(15);
         
         return view('main', [
             'products' => $products
         ]);
     }
 
+        
     /**
-     * Show the form for creating a new resource.
+     * contact
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function create()
+    public function contact()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('contact');
     }
 }

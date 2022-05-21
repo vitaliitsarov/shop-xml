@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -34,6 +35,7 @@ class Product extends Model
     protected $table = "products";
 
     protected $fillable = [
+        self::COLUMN_ID,
         self::COLUMN_TITLE,
         self::COLUMN_ID_PROVIDER,
         self::COLUMN_PRICE_NETTO,
@@ -56,7 +58,10 @@ class Product extends Model
         return $this->belongsTo('App\Category');
     }
 
-    
+    public function getId(): int
+    {
+        return (int) $this->getAttribute(self::COLUMN_ID);
+    }
     
     /**
      * getTitle
@@ -255,7 +260,7 @@ class Product extends Model
      */
     public function getDescription(): string
     {
-        return $this->getAttribute(self::COLUMN_DESCRIPTION);
+        return htmlspecialchars_decode($this->getAttribute(self::COLUMN_DESCRIPTION));
     }
     
     /**
@@ -298,5 +303,17 @@ class Product extends Model
     public function getMainImage(): string
     {
         return json_decode($this->getAttribute(self::COLUMN_IMAGES))[0];
+    }
+    
+    /**
+     * getSlug
+     *
+     * @param  mixed $value
+     * @return string
+     */
+    public function getSlug($value): string
+    {
+        $slug = Str::slug($value, '-');
+        return $slug;
     }
 }

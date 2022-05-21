@@ -15,14 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="css/elegant-icons.css" type="text/css">
-    <link rel="stylesheet" href="css/nice-select.css" type="text/css">
-    <link rel="stylesheet" href="css/jquery-ui.min.css" type="text/css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
-    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -35,7 +28,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="/"><img src="img/logo.png" alt=""></a>
+            <a href="/"><img src="{{ asset('img/logo.png') }}" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -63,7 +56,7 @@
                 <li class="active"><a href="/">Strona główna</a></li>
                 <li><a href="/">Marki</a></li>
                 <li><a href="/">Regulamin</a></li>
-                <li><a href="/">Kontakt</a></li>
+                <li><a href="{{ url('/contact') }}">Kontakt</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -104,7 +97,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
+                                <img src="{{ asset('img/language.png') }}" alt="">
                                 <div>English</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -124,7 +117,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="/"><img src="img/logo.png" alt=""></a>
+                        <a href="/"><img src="{{ asset('img/logo.png') }}" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -133,7 +126,7 @@
                             <li class="active"><a href="/">Strona główna</a></li>
                             <li><a href="/">Marki</a></li>
                             <li><a href="/">Regulamin</a></li>
-                            <li><a href="/">Kontakt</a></li>
+                            <li><a href="{{ url('/contact') }}">Kontakt</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -183,10 +176,6 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" placeholder="Wpisz czego szukasz">
                                 <button type="submit" class="site-btn">Szukaj</button>
                             </form>
@@ -208,7 +197,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('img/breadcrumb.jpg') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -302,33 +291,6 @@
                                 </label>
                             </div>
                         </div>
-                        <div class="sidebar__item">
-                            <h4>Popular Size</h4>
-                            <div class="sidebar__item__size">
-                                <label for="large">
-                                    Large
-                                    <input type="radio" id="large">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="medium">
-                                    Medium
-                                    <input type="radio" id="medium">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="small">
-                                    Small
-                                    <input type="radio" id="small">
-                                </label>
-                            </div>
-                            <div class="sidebar__item__size">
-                                <label for="tiny">
-                                    Tiny
-                                    <input type="radio" id="tiny">
-                                </label>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-9 col-md-7">
@@ -346,7 +308,7 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                            <a href="/"><img src="{{ asset('img/logo.png') }}" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: Bolesława Krzywoustego 5/u2, 70-244 Szczecin (POLSKA)</li>
@@ -393,7 +355,7 @@
                 <div class="col-lg-12">
                     <div class="footer__copyright">
                         <div class="footer__copyright__text"><p>Extaz.pl</p></div>
-                        <div class="footer__copyright__payment"><img src="img/payment-item.png" alt=""></div>
+                        <div class="footer__copyright__payment"><img src="{{ asset('img/payment-item.png') }}" alt=""></div>
                     </div>
                 </div>
             </div>
@@ -402,14 +364,14 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('js/mixitup.min.js') }}"></script>
+    <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
 
 
 

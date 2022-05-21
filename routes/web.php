@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+Route::get('/contact', [App\Http\Controllers\MainController::class, 'contact']);
 
-
-Route::get('/test', [App\Http\Controllers\TestController::class, 'index']);
+Route::prefix('product')->name('product.')->group(function () {
+    Route::get('/{id}-{slug?}.html', [App\Http\Controllers\ProductController::class, 'show'])->name('show');
+});
 
 Auth::routes();
