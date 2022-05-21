@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 /**
  * Product Routes
  */
-Route::get('/product', [\App\Http\Controllers\Api\V1\ProductController::class, 'index'])->name('product'); 
-Route::get('/product/{id}', [\App\Http\Controllers\Api\V1\ProductController::class, 'show'])->name('product.show'); 
+Route::get('/products', [\App\Http\Controllers\Api\V1\ProductController::class, 'index'])->name('product'); 
+Route::get('/products/{id}', [\App\Http\Controllers\Api\V1\ProductController::class, 'show'])->name('product.show'); 
 
 
 /**
