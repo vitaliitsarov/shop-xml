@@ -17,7 +17,7 @@ Route::get('/', function() {
     return '';
 });
 
-Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
+// Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
 Route::get('/contact', [App\Http\Controllers\MainController::class, 'contact']);
 
 Route::prefix('product')->name('product.')->group(function () {
