@@ -102,12 +102,20 @@ class ParseXmlHurt extends Command
 
         $images_new = explode('*', Arr::get($data, 'images'));
         foreach($images_new as $key_image => $value_image) {
-            $filename = basename($value_image);
-            Image::make($value_image)->save(storage_path("app/public/products/$id_provider/$filename"));
-            $images_json->put($key_image, "/storage/products/$id_provider/$filename");
+            try {
+                $filename = basename($value_image);
+                Image::make($value_image)->save(storage_path("app/public/products/$id_provider/$filename"));
+                $images_json->put($key_image, "/storage/products/$id_provider/$filename");
+            } catch (\Exception $e) {
+                continue;
+            }
+            
         }
 
         return $images_json->all();
+
+        
+        
     }
     
     /**
