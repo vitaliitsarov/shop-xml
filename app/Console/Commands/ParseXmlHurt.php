@@ -73,7 +73,7 @@ class ParseXmlHurt extends Command
                 $productNew->setImages(self::saveImages($data));
 
                 // Category
-                $category_id = self::createCategory($data);
+                $productNew->setCategory(self::createCategory($data));
 
                 // Save
                 $productNew->save();
@@ -138,6 +138,6 @@ class ParseXmlHurt extends Command
             }
         }
 
-        return $categories->last();
+        return $categories->all();
     }
 }
