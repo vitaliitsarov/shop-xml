@@ -114,9 +114,9 @@ class ParseXmlHurt extends Command
      * createCategory
      *
      * @param  mixed $data
-     * @return int
+     * @return array
      */
-    private function createCategory(array $data): int
+    private function createCategory(array $data): array
     {
         $categories = collect();
                 

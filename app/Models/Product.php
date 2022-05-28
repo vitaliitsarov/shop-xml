@@ -195,9 +195,9 @@ class Product extends Model
     /**
      * getStatus
      *
-     * @return boolean
+     * @return 
      */
-    public function getStatus(): boolean
+    public function getStatus()
     {
         return $this->getAttribute(self::COLUMN_STATUS);
     }
