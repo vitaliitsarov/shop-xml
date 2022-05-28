@@ -26,6 +26,7 @@ return new class extends Migration
             $table->boolean('status')->default(false);
             $table->string('barcode')->nullable(true);
             $table->json('images')->nullable(true);
+            $table->json('category')->nullable(true);
             $table->timestamps();
             $table->softDeletes();
         });

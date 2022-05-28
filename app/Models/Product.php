@@ -22,6 +22,7 @@ class Product extends Model
     const COLUMN_ORIGINAL_URL   = 'original_url';
     const COLUMN_DESCRIPTION    = 'description';
     const COLUMN_IMAGES         = 'images';
+    const COLUMN_CATEGORY       = 'category';
 
      /**
      * @var string
@@ -51,7 +52,8 @@ class Product extends Model
 
     protected $casts = [
         self::COLUMN_ID_PROVIDER    => 'integer',
-        self::COLUMN_STATUS         => 'boolean'
+        self::COLUMN_STATUS         => 'boolean',
+        self::COLUMN_CATEGORY       => 'array',
     ];
 
     public function category() {
@@ -295,6 +297,27 @@ class Product extends Model
         return $this->setAttribute(self::COLUMN_IMAGES, json_encode($value));
     }
     
+    /**
+     * setCategory
+     *
+     * @param  mixed $value
+     * @return Product
+     */
+    public function setCategory($value): Product
+    {
+        return $this->setAttribute(self::COLUMN_CATEGORY, $value);
+    }
+
+    /**
+     * getCategory
+     *
+     * @return string
+     */
+    public function getCategory(): array
+    {
+        return $this->getAttribute(self::COLUMN_CATEGORY);
+    }
+
     /**
      * getMainImage
      *
