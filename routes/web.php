@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function() {
+    return '';
+});
+
 Route::get('/', [App\Http\Controllers\MainController::class, 'index']);
 Route::get('/contact', [App\Http\Controllers\MainController::class, 'contact']);
 
