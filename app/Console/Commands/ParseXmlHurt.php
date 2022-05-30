@@ -61,7 +61,7 @@ class ParseXmlHurt extends Command
                 $productNew->setIdProvider(Arr::get($data, 'id_provider'))
                             ->setNetto(Arr::get($data, 'price_netto'))
                             ->setBrutto(Arr::get($data, 'price_brutto'))
-                            ->seTitle(Arr::get($data, 'title'))
+                            ->setTitle(Arr::get($data, 'title'))
                             ->setVat(Arr::get($data, 'vat'))
                             ->setStatus(Arr::get($data, 'status'))
                             ->setBarcode(Arr::get($data, 'barcode'))

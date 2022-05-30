@@ -24,7 +24,7 @@ class Product extends Model
     const COLUMN_IMAGES         = 'images';
     const COLUMN_CATEGORY       = 'category';
 
-     /**
+    /**
      * @var string
      */
     protected $primaryKey = self::COLUMN_ID;
@@ -76,12 +76,12 @@ class Product extends Model
     }
 
     /**
-     * seTitle
+     * setTitle
      *
      * @param  mixed $value
      * @return Product
      */
-    public function seTitle($value): Product
+    public function setTitle($value): Product
     {
         return $this->setAttribute(self::COLUMN_TITLE, $value);
     }
