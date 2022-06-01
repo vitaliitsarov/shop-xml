@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        $pageSize = 10;
+        $pageSize = 12;
         if((int) $request->get('pagesize')) {
             $pageSize = $request->get('pagesize');
         }
