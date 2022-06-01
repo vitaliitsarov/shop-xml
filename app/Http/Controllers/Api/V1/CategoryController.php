@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\Category;
-use App\Http\Resources\CategoryCollection;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
