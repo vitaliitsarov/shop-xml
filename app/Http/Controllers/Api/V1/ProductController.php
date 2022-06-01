@@ -12,9 +12,13 @@ use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return ProductResource::collection(Product::paginate(15)); 
+        $pageSize = 10;
+        if((int) $request->get('pagesize')) {
+            $pageSize = $request->get('pagesize');
+        }
+        return ProductResource::collection(Product::paginate($pageSize)); 
     }
 
     public function show($id)
